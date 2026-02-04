@@ -1,0 +1,37 @@
+{
+  "name": "colocation-locator",
+  "version": "1.0.0",
+  "description": "A comprehensive web application to locate and visualize colocation facilities for AWS partners",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 8000",
+    "update-data": "node update-data.js",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mandar301190/Colocation-locator.git"
+  },
+  "keywords": [
+    "colocation",
+    "aws",
+    "megaport",
+    "equinix",
+    "11:11-systems",
+    "datacenter",
+    "map",
+    "visualization"
+  ],
+  "author": "mandar301190",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "gh-pages": "^6.1.0"
+  },
+  "homepage": "https://mandar301190.github.io/Colocation-locator/"
+}
