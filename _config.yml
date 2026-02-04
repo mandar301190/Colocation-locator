@@ -1,0 +1,22 @@
+title: Colocation Locator
+description: Find AWS Partner Colocation Facilities Worldwide
+baseurl: "/Colocation-locator"
+url: "https://mandar301190.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude files from processing
+exclude:
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - update-data.js
+  - data-fetcher.js
+  - README.md
+  - .gitignore
+
+# Include files
+include:
+  - _pages

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colocation Locator - AWS Partners</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌐 Colocation Locator</h1>
+            <p>Find AWS Partner Colocation Facilities Worldwide</p>
+        </header>
+
+        <div class="controls">
+            <div class="filter-group">
+                <label for="provider-select">Provider:</label>
+                <select id="provider-select">
+                    <option value="">All Providers</option>
+                    <option value="megaport">Megaport</option>
+                    <option value="equinix">Equinix</option>
+                    <option value="1111systems">11:11 Systems</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="region-select">Region:</label>
+                <select id="region-select">
+                    <option value="">All Regions</option>
+                    <option value="North America">North America</option>
+                    <option value="EMEA">EMEA</option>
+                    <option value="APJ">APJ</option>
+                    <option value="South America">South America</option>
+                    <option value="South Africa">South Africa</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <button id="refresh-data" class="refresh-btn">🔄 Refresh Data</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+
+            <div class="sidebar">
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-locations">0</span>
+                        <span class="stat-label">Total Locations</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="filtered-locations">0</span>
+                        <span class="stat-label">Filtered Results</span>
+                    </div>
+                </div>
+
+                <div class="locations-list">
+                    <h3>Locations</h3>
+                    <div id="locations-container">
+                        <div class="loading">Loading locations...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Data sourced from PeeringDB and DataCenters.com | Updated weekly</p>
+            <p class="last-updated">Last updated: <span id="last-update">Loading...</span></p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
