@@ -61,8 +61,22 @@
         <div class="locations-section">
             <h3>📍 All Locations</h3>
             <p class="locations-subtitle">Click any location to view on map</p>
-            <div id="locations-container" class="locations-horizontal">
-                <div class="loading">Loading locations...</div>
+            <div class="table-container">
+                <table id="locations-table" class="locations-table">
+                    <thead>
+                        <tr>
+                            <th>Colocation Name</th>
+                            <th>Map Link</th>
+                            <th>Country</th>
+                            <th>Continent</th>
+                        </tr>
+                    </thead>
+                    <tbody id="locations-container">
+                        <tr>
+                            <td colspan="4" class="loading">Loading locations...</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 

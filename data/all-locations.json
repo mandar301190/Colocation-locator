@@ -1,56 +1,6 @@
 {
   "megaport": [
     {
-      "name": "Megaport Equinix DC1-DC15, DC21 - Ashburn",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Ashburn",
-      "lat": 39.016363,
-      "lng": -77.459023,
-      "address": "21715 Filigree Ct"
-    },
-    {
-      "name": "Megaport Equinix DA1 - Dallas",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Dallas",
-      "lat": 32.800955,
-      "lng": -96.81955,
-      "address": "1950 N Stemmons Fwy"
-    },
-    {
-      "name": "Megaport Equinix SV1/SV5/SV10 - Silicon Valley, San Jose",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "San Jose",
-      "lat": 37.241767,
-      "lng": -121.782967,
-      "address": "11 Great Oaks Blvd"
-    },
-    {
-      "name": "Megaport Equinix CH1/CH2/CH4 - Chicago",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Chicago",
-      "lat": 41.85365,
-      "lng": -87.618342,
-      "address": "350 E Cermak Rd"
-    },
-    {
-      "name": "Megaport Equinix LA1 - Los Angeles",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Los Angeles",
-      "lat": 34.047501,
-      "lng": -118.2573,
-      "address": "600 W 7th St"
-    },
-    {
       "name": "Megaport Digital Realty NYC (60 Hudson)",
       "provider": "megaport",
       "region": "North America",
@@ -59,26 +9,6 @@
       "lat": 40.717723,
       "lng": -74.008299,
       "address": "60 Hudson St"
-    },
-    {
-      "name": "Megaport Equinix TR1 - Toronto",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "CA",
-      "city": "Toronto",
-      "lat": 43.644672,
-      "lng": -79.384128,
-      "address": "151 Front St"
-    },
-    {
-      "name": "Megaport Equinix MI1 - Miami, NOTA",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Miami",
-      "lat": 25.782648,
-      "lng": -80.193157,
-      "address": "50 NE 9th St"
     },
     {
       "name": "Megaport Digital Realty NYC (111 8th Ave)",
@@ -121,26 +51,6 @@
       "address": "365 Main Street"
     },
     {
-      "name": "Megaport Equinix NY2/NY4/NY5/NY6 - New York, Secaucus",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Secaucus",
-      "lat": 40.778534,
-      "lng": -74.072237,
-      "address": "800 Secaucus Road"
-    },
-    {
-      "name": "Megaport Equinix NY9 - New York, 111 8th Avenue",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "New York",
-      "lat": 40.741469,
-      "lng": -74.003387,
-      "address": "111 8th Ave"
-    },
-    {
       "name": "Megaport Telehouse - Paris 2 (Voltaire - L\u00e9on Frot)",
       "provider": "megaport",
       "region": "EMEA",
@@ -169,16 +79,6 @@
       "lat": 50.11967,
       "lng": 8.73463,
       "address": "Hanauer Landstrasse 298"
-    },
-    {
-      "name": "Megaport Equinix FR5 - Frankfurt, KleyerStrasse",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "DE",
-      "city": "Frankfurt",
-      "lat": 50.09885,
-      "lng": 8.632004,
-      "address": "Kleyerstrasse 90"
     },
     {
       "name": "Megaport Digital Realty Amsterdam AMS17",
@@ -211,16 +111,6 @@
       "address": "Cessnalaan 1"
     },
     {
-      "name": "Megaport Equinix DA3 - Dallas",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Dallas",
-      "lat": 32.800955,
-      "lng": -96.81955,
-      "address": "1950 N Stemmons Fwy"
-    },
-    {
       "name": "Megaport Digital Realty Seattle SEA10",
       "provider": "megaport",
       "region": "North America",
@@ -231,36 +121,6 @@
       "address": "2001 Sixth Avenue"
     },
     {
-      "name": "Megaport Equinix FR7 - Frankfurt, Gutleutstrasse",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "DE",
-      "city": "Frankfurt",
-      "lat": 50.096869,
-      "lng": 8.644169,
-      "address": "Gutleutstrasse 310"
-    },
-    {
-      "name": "Megaport Equinix SE2/SE3 - Seattle",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Seattle",
-      "lat": 47.614358,
-      "lng": -122.338864,
-      "address": "2001 Sixth Avenue"
-    },
-    {
-      "name": "Megaport Equinix DC7 - Ashburn, Vienna",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Vienna",
-      "lat": 38.908422,
-      "lng": -77.219692,
-      "address": "7990 Science Applications Ct"
-    },
-    {
       "name": "Megaport AtlasEdge DC Milan LIN001",
       "provider": "megaport",
       "region": "EMEA",
@@ -269,16 +129,6 @@
       "lat": 45.49538,
       "lng": 9.17865,
       "address": "Via Lancetti 23"
-    },
-    {
-      "name": "Megaport Equinix LA2 - Los Angeles",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Los Angeles",
-      "lat": 34.048897,
-      "lng": -118.259585,
-      "address": "818 W 7th St"
     },
     {
       "name": "Megaport Telehouse - Frankfurt",
@@ -311,16 +161,6 @@
       "address": "Mesena 80"
     },
     {
-      "name": "Megaport Equinix BA1 - Barcelona",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "ES",
-      "city": "Barcelona",
-      "lat": 41.351557,
-      "lng": 2.137457,
-      "address": "Carrer de l'Acer 30-32"
-    },
-    {
       "name": "Megaport Digital Realty ATL (56 Marietta)",
       "provider": "megaport",
       "region": "North America",
@@ -331,16 +171,6 @@
       "address": "56 Marietta Street"
     },
     {
-      "name": "Megaport Equinix MD2 - Madrid",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "ES",
-      "city": "Alcobendas",
-      "lat": 40.536855,
-      "lng": -3.648584,
-      "address": "Calle Valgrande 6"
-    },
-    {
       "name": "Megaport Digital Realty Madrid MAD1-2",
       "provider": "megaport",
       "region": "EMEA",
@@ -349,56 +179,6 @@
       "lat": 40.439323,
       "lng": -3.621211,
       "address": "C/ Albasanz 71"
-    },
-    {
-      "name": "Megaport Equinix SY1/SY2 - Sydney",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Sydney",
-      "lat": -33.921868,
-      "lng": 151.188025,
-      "address": "639 Gardeners Road"
-    },
-    {
-      "name": "Megaport Equinix DC8 - Ashburn, Vienna",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Vienna",
-      "lat": 38.931419,
-      "lng": -77.238951,
-      "address": "8502A Tyco Rd"
-    },
-    {
-      "name": "Megaport Equinix SK1 - Stockholm, Bromma",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "SE",
-      "city": "Stockholm",
-      "lat": 59.362574,
-      "lng": 17.955657,
-      "address": "Marieh\u00e4llsv\u00e4gen 36"
-    },
-    {
-      "name": "Megaport Equinix DB1 - Dublin, CityWest",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "IE",
-      "city": "Dublin",
-      "lat": 53.296306,
-      "lng": -6.41897,
-      "address": "Unit 4027, Kingswood Road"
-    },
-    {
-      "name": "Megaport Equinix HK1 - Hong Kong",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "HK",
-      "city": "Tsuen Wan",
-      "lat": 22.365581,
-      "lng": 114.11932,
-      "address": "17/F Global Gateway (Hong Kong)"
     },
     {
       "name": "Megaport Digital Realty PHX10 (120 E Van Buren)",
@@ -511,16 +291,6 @@
       "address": "15 Enterprise Avenue N"
     },
     {
-      "name": "Megaport Equinix SG1 - Singapore",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "SG",
-      "city": "Singapore",
-      "lat": 1.295229,
-      "lng": 103.789842,
-      "address": "20 Ayer Rajah Crescent"
-    },
-    {
       "name": "Megaport CoreSite - Washington,DC (DC1)",
       "provider": "megaport",
       "region": "North America",
@@ -529,26 +299,6 @@
       "lat": 38.902918,
       "lng": -77.029149,
       "address": "1275 K Street, NW"
-    },
-    {
-      "name": "Megaport Equinix PA2 - Paris, Saint-Denis",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "FR",
-      "city": "Paris",
-      "lat": 48.927166,
-      "lng": 2.350664,
-      "address": "Rue Ambroise Croizat, 114"
-    },
-    {
-      "name": "Megaport Equinix LA3/LA4 - Los Angeles, El Segundo",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "El Segundo",
-      "lat": 33.921239,
-      "lng": -118.383778,
-      "address": "445 North Douglas Street"
     },
     {
       "name": "Megaport 165 Halsey Meet-Me Room",
@@ -581,16 +331,6 @@
       "address": "J.W. Lucasweg 35"
     },
     {
-      "name": "Megaport Equinix AM1/AM2 - Amsterdam, Luttenbergweg",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "NL",
-      "city": "Amsterdam",
-      "lat": 52.299929,
-      "lng": 4.943121,
-      "address": "Luttenbergweg 4"
-    },
-    {
       "name": "Megaport Global Switch Singapore",
       "provider": "megaport",
       "region": "APJ",
@@ -619,16 +359,6 @@
       "lat": 43.644672,
       "lng": -79.384128,
       "address": "151 Front Street West"
-    },
-    {
-      "name": "Megaport Equinix LD4 - London, Slough",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "GB",
-      "city": "Slough",
-      "lat": 51.523805,
-      "lng": -0.635545,
-      "address": "2 Buckingham Avenue"
     },
     {
       "name": "Megaport Digital Realty DFW (2323 Bryan St)",
@@ -681,26 +411,6 @@
       "address": "427 S. LaSalle"
     },
     {
-      "name": "Megaport Equinix TY2 - Tokyo",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "JP",
-      "city": "Tokyo",
-      "lat": 35.617432,
-      "lng": 139.748106,
-      "address": "3-8-21 Higashi-Shinagawa"
-    },
-    {
-      "name": "Megaport Equinix FR2 - Frankfurt, North",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "DE",
-      "city": "Frankfurt",
-      "lat": 50.141895,
-      "lng": 8.741764,
-      "address": "Kruppstrasse 121-127"
-    },
-    {
       "name": "Megaport Digital Realty CHI (350 E Cermak)",
       "provider": "megaport",
       "region": "North America",
@@ -729,26 +439,6 @@
       "lat": 47.671879,
       "lng": -117.09123,
       "address": "23403 E Mission Ave"
-    },
-    {
-      "name": "Megaport Equinix LD9 - London, Powergate",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "GB",
-      "city": "London",
-      "lat": 51.530547,
-      "lng": -0.257425,
-      "address": "Unit 1, Powergate Business Park"
-    },
-    {
-      "name": "Megaport Equinix DA4 - Dallas",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Dallas",
-      "lat": 32.787212,
-      "lng": -96.794219,
-      "address": "2323 Bryan St."
     },
     {
       "name": "Megaport Hurricane Electric Fremont 2",
@@ -901,26 +591,6 @@
       "address": "32 Avenue of the Americas"
     },
     {
-      "name": "Megaport Equinix FR4 - Frankfurt, West",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "DE",
-      "city": "Frankfurt",
-      "lat": 50.097939,
-      "lng": 8.587964,
-      "address": "L\u00e4rchenstrasse 110"
-    },
-    {
-      "name": "Megaport Equinix SK2 - Stockholm, Sk\u00f6ndal",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "SE",
-      "city": "Stockholm",
-      "lat": 59.263521,
-      "lng": 18.105656,
-      "address": "Kvastv\u00e4gen 25-29"
-    },
-    {
       "name": "Megaport Fujitsu Eight Mile Plains",
       "provider": "megaport",
       "region": "APJ",
@@ -931,16 +601,6 @@
       "address": "3 Brandl Street"
     },
     {
-      "name": "Megaport Equinix ME5 - Melbourne (formerly Metronode Melbourne 1)",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Melbourne",
-      "lat": -37.807942,
-      "lng": 144.953538,
-      "address": "22-36 Walsh Street"
-    },
-    {
       "name": "Megaport DigiCo Brisbane BNE3 (iseek IR)",
       "provider": "megaport",
       "region": "APJ",
@@ -949,16 +609,6 @@
       "lat": -27.49132,
       "lng": 153.035403,
       "address": "Level 1"
-    },
-    {
-      "name": "Megaport Equinix SG2 - Singapore",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "SG",
-      "city": "Singapore",
-      "lat": 1.321502,
-      "lng": 103.695359,
-      "address": "15 Pioneer Walk"
     },
     {
       "name": "Megaport Digital Realty Paris PAR5",
@@ -1011,16 +661,6 @@
       "address": "Eschborner Landstra\u00dfe 110"
     },
     {
-      "name": "Megaport Equinix ML2 - Milan, Savona",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "IT",
-      "city": "Milan",
-      "lat": 45.448684,
-      "lng": 9.147436,
-      "address": "Via Savona 125"
-    },
-    {
       "name": "Megaport PhoenixNAP",
       "provider": "megaport",
       "region": "North America",
@@ -1029,16 +669,6 @@
       "lat": 33.41601,
       "lng": -112.009445,
       "address": "3402 E. University Dr."
-    },
-    {
-      "name": "Megaport Equinix AT1 - Atlanta",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Atlanta",
-      "lat": 33.758567,
-      "lng": -84.387874,
-      "address": "180 Peachtree"
     },
     {
       "name": "Megaport 501 Franklin Ave",
@@ -1069,16 +699,6 @@
       "lat": 39.022561,
       "lng": -77.455012,
       "address": "44664 Guilford Drive"
-    },
-    {
-      "name": "Megaport Equinix HK2 - Hong Kong",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "HK",
-      "city": "Kwai Chung",
-      "lat": 22.362284,
-      "lng": 114.119218,
-      "address": "7/F Kerry Warehouse"
     },
     {
       "name": "Megaport NTT DATA Dojima (building #4)",
@@ -1121,16 +741,6 @@
       "address": "21635 Red Rum Dr."
     },
     {
-      "name": "Megaport Equinix AM5 - Amsterdam, Schepenbergweg",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "NL",
-      "city": "Amsterdam",
-      "lat": 52.293351,
-      "lng": 4.945054,
-      "address": "Schepenbergweg 42"
-    },
-    {
       "name": "Megaport Telehouse - New York Chelsea",
       "provider": "megaport",
       "region": "North America",
@@ -1139,16 +749,6 @@
       "lat": 40.743209,
       "lng": -74.007954,
       "address": "85 10th Avenue"
-    },
-    {
-      "name": "Megaport Equinix SP2 - S\u00e3o Paulo",
-      "provider": "megaport",
-      "region": "South America",
-      "country": "BR",
-      "city": "Barueri",
-      "lat": -23.5027,
-      "lng": -46.827255,
-      "address": "Alameda Araguaia, 3641"
     },
     {
       "name": "Megaport 5GN Melbourne Data Centre (MDC)",
@@ -1271,16 +871,6 @@
       "address": "31 Airedale Street"
     },
     {
-      "name": "Megaport Equinix SY3 - Sydney",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Sydney",
-      "lat": -33.911776,
-      "lng": 151.192942,
-      "address": "47 Bourke Road"
-    },
-    {
       "name": "Megaport NEXTDC S1",
       "provider": "megaport",
       "region": "APJ",
@@ -1321,16 +911,6 @@
       "address": "93 Cours des Petites Ecuries"
     },
     {
-      "name": "Megaport Equinix OS1 - Osaka",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "JP",
-      "city": "Osaka",
-      "lat": 34.675774,
-      "lng": 135.495551,
-      "address": "1-26-1 Shinmachi Nishi-ku"
-    },
-    {
       "name": "Megaport Evocative SJC11",
       "provider": "megaport",
       "region": "North America",
@@ -1369,16 +949,6 @@
       "lat": 39.000821,
       "lng": -77.479198,
       "address": "43940 Digital Loudoun Plaza"
-    },
-    {
-      "name": "Megaport Equinix TY4 - Tokyo",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "JP",
-      "city": "Tokyo",
-      "lat": 35.688354,
-      "lng": 139.765922,
-      "address": "Otemachi Finance City"
     },
     {
       "name": "Megaport Iron Mountain Data Center - Denver (DEN-1)",
@@ -1429,16 +999,6 @@
       "lat": 45.477926,
       "lng": 9.101999,
       "address": "Via Caldera 21"
-    },
-    {
-      "name": "Megaport Equinix ME1/ME2 - Melbourne",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Melbourne",
-      "lat": -37.821681,
-      "lng": 144.915458,
-      "address": "600 Lorimer Street"
     },
     {
       "name": "Megaport Iron Mountain Data Center - New Jersey (NJE-1)",
@@ -1501,16 +1061,6 @@
       "address": "6900 South Peoria Street"
     },
     {
-      "name": "Megaport Equinix TR2 - Toronto",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "CA",
-      "city": "Toronto",
-      "lat": 43.650854,
-      "lng": -79.361951,
-      "address": "45 Parliament St"
-    },
-    {
       "name": "Megaport Digital Realty BOS (128 1st Ave)",
       "provider": "megaport",
       "region": "North America",
@@ -1519,26 +1069,6 @@
       "lat": 42.301316,
       "lng": -71.219029,
       "address": "128 First Avenue"
-    },
-    {
-      "name": "Megaport Equinix SG3 - Singapore",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "SG",
-      "city": "Singapore",
-      "lat": 1.29556,
-      "lng": 103.790346,
-      "address": "26A Ayer Rajah Crescent"
-    },
-    {
-      "name": "Megaport Equinix DA6 - Dallas",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Dallas",
-      "lat": 32.800748,
-      "lng": -96.819412,
-      "address": "1950 N Stemmons Fwy"
     },
     {
       "name": "Megaport STACK EMEA - STO01",
@@ -1641,36 +1171,6 @@
       "address": "8636 S Peoria St"
     },
     {
-      "name": "Megaport Equinix ME4 - Melbourne, Derrimut (formerly Metronode Melbourne 2)",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Derrimut",
-      "lat": -37.788296,
-      "lng": 144.784854,
-      "address": "2 Davis Ct"
-    },
-    {
-      "name": "Megaport Equinix SY6 - Sydney (formerly Metronode Sydney 2)",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Silverwater",
-      "lat": -33.836684,
-      "lng": 151.053282,
-      "address": "8-14 Egerton St"
-    },
-    {
-      "name": "Megaport Equinix TR4 - Toronto (formerly Q9 Toronto 2/3/4)",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "CA",
-      "city": "Toronto",
-      "lat": 43.64678,
-      "lng": -79.382225,
-      "address": "100 Wellington Street West"
-    },
-    {
       "name": "Megaport Digital Realty LAX (2260 E El Segundo)",
       "provider": "megaport",
       "region": "North America",
@@ -1679,26 +1179,6 @@
       "lat": 33.915663,
       "lng": -118.384725,
       "address": "2260 E El Segundo Blvd"
-    },
-    {
-      "name": "Megaport Equinix DA2 - Dallas",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Dallas",
-      "lat": 32.800955,
-      "lng": -96.81955,
-      "address": "1950 N Stemmons Fwy"
-    },
-    {
-      "name": "Megaport Equinix DA7 - Dallas",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Plano",
-      "lat": 33.064858,
-      "lng": -96.810993,
-      "address": "6653 Pinecrest Drive"
     },
     {
       "name": "Megaport Centersquare Chicago (ORD2)",
@@ -1949,16 +1429,6 @@
       "lat": 41.796754,
       "lng": -88.24276,
       "address": "2905 Deihl Rd"
-    },
-    {
-      "name": "Megaport Equinix SY4 - Sydney",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Sydney",
-      "lat": -33.918198,
-      "lng": 151.1893,
-      "address": "Unit A, 200 Bourke Road"
     },
     {
       "name": "Megaport DATA4 Milan-Cornaredo - MIL1",
@@ -2281,16 +1751,6 @@
       "address": "454 St. Pauls Terrace"
     },
     {
-      "name": "Megaport Equinix FR6 - Frankfurt, West",
-      "provider": "megaport",
-      "region": "EMEA",
-      "country": "DE",
-      "city": "Frankfurt",
-      "lat": 50.097939,
-      "lng": 8.587964,
-      "address": "L\u00e4rchenstrasse 110"
-    },
-    {
       "name": "Megaport Digital Realty IAD (44100 Digital Loudoun)",
       "provider": "megaport",
       "region": "North America",
@@ -2489,16 +1949,6 @@
       "lat": 33.761505,
       "lng": -84.39141,
       "address": "250 Williams Street"
-    },
-    {
-      "name": "Megaport Equinix BR1 - Brisbane (formerly Metronode Brisbane 1)",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Brisbane",
-      "lat": -27.455185,
-      "lng": 153.03407,
-      "address": "54-58 Alfred Street"
     },
     {
       "name": "Megaport Digital Realty Sydney SYD11",
@@ -2781,16 +2231,6 @@
       "address": "1950 N Stemmons Fwy"
     },
     {
-      "name": "Megaport Equinix SG4 - Singapore",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "SG",
-      "city": "Singapore",
-      "lat": 1.339068,
-      "lng": 103.893284,
-      "address": "7 Tai Seng Drive"
-    },
-    {
       "name": "Megaport TierPoint Boston - Andover",
       "provider": "megaport",
       "region": "North America",
@@ -2821,16 +2261,6 @@
       "address": "140 4th Ave N"
     },
     {
-      "name": "Megaport Equinix SY5 - Sydney",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Sydney",
-      "lat": -33.918198,
-      "lng": 151.1893,
-      "address": "Unit B, 200 Bourke Road"
-    },
-    {
       "name": "Megaport Fujitsu Noble Park",
       "provider": "megaport",
       "region": "APJ",
@@ -2859,16 +2289,6 @@
       "lat": -33.872342,
       "lng": 151.194672,
       "address": "55 Pyrmont Bridge Rd"
-    },
-    {
-      "name": "Megaport Equinix TY11 - Tokyo",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "JP",
-      "city": "Tokyo",
-      "lat": 35.639737,
-      "lng": 139.792362,
-      "address": "1-2-41 Ariake"
     },
     {
       "name": "Megaport Digital Realty DFW (4025 Midway Road)",
@@ -2909,16 +2329,6 @@
       "lat": 1.372745,
       "lng": 103.970622,
       "address": "11 Loyang Close"
-    },
-    {
-      "name": "Megaport Equinix LA7 - Los Angeles",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Los Angeles",
-      "lat": 33.850864,
-      "lng": -118.304002,
-      "address": "1501 Francisco Street"
     },
     {
       "name": "Megaport Evocative BOS1",
@@ -2969,16 +2379,6 @@
       "lat": 32.96547,
       "lng": -96.711986,
       "address": "1210 Integrity Drive"
-    },
-    {
-      "name": "Megaport Equinix SG5 - Singapore",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "SG",
-      "city": "Singapore",
-      "lat": 1.31683,
-      "lng": 103.702268,
-      "address": "6 Sunview Drive"
     },
     {
       "name": "Megaport Sungard AS Aurora",
@@ -3079,26 +2479,6 @@
       "lat": 37.365431,
       "lng": -121.961738,
       "address": "2050 Martin Ave"
-    },
-    {
-      "name": "Megaport Equinix DA11 - Dallas",
-      "provider": "megaport",
-      "region": "North America",
-      "country": "US",
-      "city": "Dallas",
-      "lat": 32.801347,
-      "lng": -96.821074,
-      "address": "1990 N Stemmons Fwy"
-    },
-    {
-      "name": "Megaport Equinix PE2/PE3 - Perth",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "AU",
-      "city": "Shenton Park",
-      "lat": -31.955087,
-      "lng": 115.796417,
-      "address": "FY 11  37 Lemnos St"
     },
     {
       "name": "Megaport Interactive Melbourne",
@@ -3389,16 +2769,6 @@
       "lat": 51.467283,
       "lng": -0.399244,
       "address": "London Technology Centre (LTC)"
-    },
-    {
-      "name": "Megaport Equinix TY15 - Tokyo",
-      "provider": "megaport",
-      "region": "APJ",
-      "country": "JP",
-      "city": "Tokyo",
-      "lat": 35.632661,
-      "lng": 139.747749,
-      "address": "3-6-4 Konan, Minato-ku"
     },
     {
       "name": "Megaport Telstra InfraCo - Clayton Data Centre",
@@ -6069,6 +5439,6 @@
       "lng": 31.2357
     }
   ],
-  "lastUpdated": "2026-02-04T20:47:12.000Z",
-  "totalLocations": 612
+  "lastUpdated": "2026-02-04T20:49:33.000Z",
+  "totalLocations": 549
 }

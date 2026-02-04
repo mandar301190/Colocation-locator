@@ -515,20 +515,88 @@ class ColocationLocator {
         const container = document.getElementById('locations-container');
         
         if (this.filteredLocations.length === 0) {
-            container.innerHTML = '<div class="loading">No locations found for the selected filters.</div>';
+            container.innerHTML = '<tr><td colspan="4" class="loading">No locations found for the selected filters.</td></tr>';
             return;
         }
 
-        const html = this.filteredLocations.map(location => `
-            <div class="location-item ${location.provider}" onclick="colocationLocator.focusLocation(${location.lat}, ${location.lng})">
-                <div class="location-name">${location.name}</div>
-                <div class="location-details">${location.city}, ${location.country}</div>
-                <div class="location-details">${location.region}</div>
-                <span class="provider-badge ${location.provider}">${this.getProviderDisplayName(location.provider)}</span>
-            </div>
-        `).join('');
+        const html = this.filteredLocations.map(location => {
+            const googleMapsUrl = `https://www.google.com/maps?q=${location.lat},${location.lng}`;
+            const countryName = this.getCountryName(location.country);
+            
+            return `
+                <tr>
+                    <td class="location-name-cell" onclick="colocationLocator.focusLocation(${location.lat}, ${location.lng})">
+                        ${location.name}
+                        <span class="provider-badge ${location.provider}">${this.getProviderDisplayName(location.provider)}</span>
+                    </td>
+                    <td>
+                        <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer" class="map-link">View Map</a>
+                    </td>
+                    <td class="country-cell">${countryName}</td>
+                    <td class="continent-cell">${location.region}</td>
+                </tr>
+            `;
+        }).join('');
 
         container.innerHTML = html;
+    }
+
+    getCountryName(code) {
+        const countryMap = {
+            'US': 'United States',
+            'CA': 'Canada',
+            'MX': 'Mexico',
+            'BR': 'Brazil',
+            'AR': 'Argentina',
+            'CL': 'Chile',
+            'CO': 'Colombia',
+            'PE': 'Peru',
+            'GB': 'United Kingdom',
+            'DE': 'Germany',
+            'FR': 'France',
+            'NL': 'Netherlands',
+            'IT': 'Italy',
+            'ES': 'Spain',
+            'CH': 'Switzerland',
+            'AT': 'Austria',
+            'BE': 'Belgium',
+            'SE': 'Sweden',
+            'NO': 'Norway',
+            'DK': 'Denmark',
+            'FI': 'Finland',
+            'IE': 'Ireland',
+            'PL': 'Poland',
+            'CZ': 'Czech Republic',
+            'HU': 'Hungary',
+            'RO': 'Romania',
+            'BG': 'Bulgaria',
+            'GR': 'Greece',
+            'PT': 'Portugal',
+            'TR': 'Turkey',
+            'AE': 'UAE',
+            'SA': 'Saudi Arabia',
+            'ZA': 'South Africa',
+            'AU': 'Australia',
+            'NZ': 'New Zealand',
+            'JP': 'Japan',
+            'KR': 'South Korea',
+            'CN': 'China',
+            'HK': 'Hong Kong',
+            'SG': 'Singapore',
+            'MY': 'Malaysia',
+            'TH': 'Thailand',
+            'ID': 'Indonesia',
+            'IN': 'India',
+            'PH': 'Philippines',
+            'VN': 'Vietnam',
+            'OM': 'Oman',
+            'EG': 'Egypt',
+            'KE': 'Kenya',
+            'NG': 'Nigeria',
+            'GH': 'Ghana',
+            'CI': 'Ivory Coast'
+        };
+        return countryMap[code] || code;
     }
 
     updateStats() {
