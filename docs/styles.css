@@ -94,11 +94,15 @@ body {
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
-.main-content {
-    display: grid;
-    grid-template-columns: 1fr 350px;
+.stats-bar {
+    display: flex;
     gap: 20px;
-    height: 600px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    justify-content: center;
 }
 
 .map-container {
@@ -106,6 +110,8 @@ body {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    height: 500px;
+    margin-bottom: 20px;
 }
 
 #map {
@@ -113,27 +119,46 @@ body {
     width: 100%;
 }
 
-.sidebar {
+.locations-section {
     background: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: 25px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
 }
 
-.stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.locations-section h3 {
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.locations-subtitle {
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 0.9rem;
+    text-align: left;
+    font-style: italic;
+}
+
+.locations-horizontal {
+    display: flex;
+    flex-wrap: nowrap;
     gap: 15px;
-    margin-bottom: 25px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 15px 5px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 .stat-item {
     text-align: center;
-    padding: 15px;
+    padding: 20px 40px;
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
     border-radius: 8px;
+    min-width: 150px;
 }
 
 .stat-number {
@@ -144,43 +169,29 @@ body {
 }
 
 .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: #666;
     font-weight: 500;
 }
 
-.locations-list {
-    flex: 1;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.locations-list h3 {
-    margin-bottom: 15px;
-    color: #333;
-    font-weight: 600;
-}
-
-#locations-container {
-    flex: 1;
-    overflow-y: auto;
-    padding-right: 10px;
-}
-
 .location-item {
-    padding: 12px;
-    margin-bottom: 8px;
+    padding: 14px 16px;
     background: #f8f9fa;
-    border-radius: 8px;
+    border-radius: 10px;
     border-left: 4px solid transparent;
     transition: all 0.3s ease;
     cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    flex: 0 0 auto;
+    min-width: 220px;
+    max-width: 220px;
+    height: fit-content;
 }
 
 .location-item:hover {
     background: #e9ecef;
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .location-item.megaport {
@@ -198,12 +209,14 @@ body {
 .location-name {
     font-weight: 600;
     color: #333;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
 }
 
 .location-details {
     font-size: 0.85rem;
     color: #666;
+    margin-bottom: 2px;
 }
 
 .provider-badge {
@@ -254,37 +267,34 @@ body {
 }
 
 /* Custom scrollbar */
-#locations-container::-webkit-scrollbar {
-    width: 6px;
+.locations-horizontal::-webkit-scrollbar {
+    height: 10px;
 }
 
-#locations-container::-webkit-scrollbar-track {
+.locations-horizontal::-webkit-scrollbar-track {
     background: #f1f1f1;
-    border-radius: 3px;
+    border-radius: 5px;
+    margin: 0 10px;
 }
 
-#locations-container::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 3px;
+.locations-horizontal::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 5px;
 }
 
-#locations-container::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
+.locations-horizontal::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5568d3, #653a8b);
 }
 
 /* Responsive design */
 @media (max-width: 1024px) {
-    .main-content {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    
     .map-container {
         height: 400px;
     }
     
-    .sidebar {
-        height: 300px;
+    .location-item {
+        min-width: 200px;
+        max-width: 200px;
     }
 }
 
@@ -297,11 +307,26 @@ body {
         min-width: 100%;
     }
     
-    .stats {
-        grid-template-columns: 1fr;
+    .stats-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .map-container {
+        height: 350px;
+    }
+    
+    .location-item {
+        min-width: 180px;
+        max-width: 180px;
+        padding: 12px 14px;
     }
     
     .header h1 {
         font-size: 2rem;
+    }
+    
+    .locations-section {
+        padding: 20px;
     }
 }
