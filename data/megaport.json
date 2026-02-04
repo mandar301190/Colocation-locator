@@ -2808,5 +2808,23 @@
     "lat": 34.06343,
     "lng": -84.272727,
     "address": "11650 Great Oaks Way"
+  },
+  {
+    "name": "Megaport Equinix SP2 - S\u00e3o Paulo",
+    "provider": "megaport",
+    "region": "South America",
+    "country": "BR",
+    "city": "Barueri",
+    "lat": -23.5027,
+    "lng": -46.827255
+  },
+  {
+    "name": "Megaport Ascenty VIN2 - Vinhedo",
+    "provider": "megaport",
+    "region": "South America",
+    "country": "BR",
+    "city": "Vinhedo",
+    "lat": -23.0297,
+    "lng": -46.9753
   }
 ]
