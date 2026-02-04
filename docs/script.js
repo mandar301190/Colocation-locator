@@ -60,7 +60,24 @@ class ColocationLocator {
     }
 
     async fetchMegaportData() {
-        // Comprehensive Megaport data based on PeeringDB facilities
+        // Load Megaport data from JSON file
+        try {
+            const response = await fetch('data/megaport.json');
+            if (!response.ok) {
+                console.warn('Could not load megaport.json, using fallback data');
+                return this.getFallbackMegaportData();
+            }
+            const data = await response.json();
+            console.log(`Loaded ${data.length} Megaport locations from JSON`);
+            return data;
+        } catch (error) {
+            console.warn('Error loading megaport.json:', error);
+            return this.getFallbackMegaportData();
+        }
+    }
+
+    getFallbackMegaportData() {
+        // Fallback Megaport data in case JSON file is not available
         return [
             // North America
             { name: 'Megaport New York (60 Hudson)', provider: 'megaport', region: 'North America', country: 'United States', city: 'New York', lat: 40.7128, lng: -74.0060 },
