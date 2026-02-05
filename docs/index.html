@@ -16,31 +16,31 @@
         </header>
 
         <div class="controls">
-            <div class="filter-group">
-                <label for="provider-select">Provider:</label>
-                <select id="provider-select">
-                    <option value="">All Providers</option>
-                    <option value="megaport">Megaport</option>
-                    <option value="equinix">Equinix</option>
-                    <option value="1111systems">11:11 Systems</option>
-                </select>
+            <div class="filters-wrapper">
+                <div class="filter-group">
+                    <label for="provider-select">Provider:</label>
+                    <select id="provider-select">
+                        <option value="">All Providers</option>
+                        <option value="megaport">Megaport</option>
+                        <option value="equinix">Equinix</option>
+                        <option value="1111systems">11:11 Systems</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="region-select">Region:</label>
+                    <select id="region-select">
+                        <option value="">All Regions</option>
+                        <option value="North America">North America</option>
+                        <option value="EMEA">EMEA</option>
+                        <option value="APJ">APJ</option>
+                        <option value="South America">South America</option>
+                        <option value="South Africa">South Africa</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="filter-group">
-                <label for="region-select">Region:</label>
-                <select id="region-select">
-                    <option value="">All Regions</option>
-                    <option value="North America">North America</option>
-                    <option value="EMEA">EMEA</option>
-                    <option value="APJ">APJ</option>
-                    <option value="South America">South America</option>
-                    <option value="South Africa">South Africa</option>
-                </select>
-            </div>
-
-            <div class="filter-group">
-                <button id="refresh-data" class="refresh-btn">🔄 Refresh Data</button>
-            </div>
+            <button id="refresh-data" class="refresh-btn">🔄 Refresh Data</button>
         </div>
 
         <div class="map-container">

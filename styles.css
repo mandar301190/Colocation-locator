@@ -45,6 +45,14 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.filters-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .filter-group {
@@ -86,7 +94,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
-    align-self: flex-end;
+    margin-left: auto;
 }
 
 .refresh-btn:hover {
