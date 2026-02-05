@@ -35,6 +35,38 @@ class ColocationLocator {
         document.getElementById('provider-select').addEventListener('change', () => this.filterLocations());
         document.getElementById('region-select').addEventListener('change', () => this.filterLocations());
         document.getElementById('refresh-data').addEventListener('click', () => this.refreshData());
+        
+        // Hide nearest locations section when clicking outside the map
+        document.addEventListener('click', (e) => {
+            const mapContainer = document.querySelector('.map-container');
+            const nearestSection = document.getElementById('nearest-locations-list');
+            
+            // Check if click is outside map container and nearest section is visible
+            if (nearestSection && 
+                nearestSection.style.display !== 'none' && 
+                !mapContainer.contains(e.target) && 
+                !nearestSection.contains(e.target)) {
+                this.clearNearestLocations();
+            }
+        });
+    }
+
+    clearNearestLocations() {
+        // Remove markers and lines from map
+        if (this.clickMarker) {
+            this.map.removeLayer(this.clickMarker);
+            this.clickMarker = null;
+        }
+        this.nearestMarkers.forEach(marker => this.map.removeLayer(marker));
+        this.nearestMarkers = [];
+        this.nearestLines.forEach(line => this.map.removeLayer(line));
+        this.nearestLines = [];
+        
+        // Hide the nearest locations section
+        const container = document.getElementById('nearest-locations-list');
+        if (container) {
+            container.style.display = 'none';
+        }
     }
 
     async loadData() {
