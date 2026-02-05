@@ -23,12 +23,16 @@ class ColocationLocator {
         }).addTo(this.map);
 
         // Add click event to find nearest locations
-        this.map.on('click', (e) => this.findNearestLocations(e.latlng));
+        this.map.on('click', (e) => {
+            this.mapClicked = true;
+            this.findNearestLocations(e.latlng);
+        });
         
         // Store click marker, nearest markers, and lines
         this.clickMarker = null;
         this.nearestMarkers = [];
         this.nearestLines = [];
+        this.mapClicked = false;
     }
 
     setupEventListeners() {
@@ -38,6 +42,12 @@ class ColocationLocator {
         
         // Hide nearest locations section when clicking outside the map
         document.addEventListener('click', (e) => {
+            // Skip if this was a map click
+            if (this.mapClicked) {
+                this.mapClicked = false;
+                return;
+            }
+            
             const mapContainer = document.querySelector('.map-container');
             const nearestSection = document.getElementById('nearest-locations-list');
             
