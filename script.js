@@ -25,9 +25,10 @@ class ColocationLocator {
         // Add click event to find nearest locations
         this.map.on('click', (e) => this.findNearestLocations(e.latlng));
         
-        // Store click marker
+        // Store click marker, nearest markers, and lines
         this.clickMarker = null;
         this.nearestMarkers = [];
+        this.nearestLines = [];
     }
 
     setupEventListeners() {
@@ -682,12 +683,14 @@ class ColocationLocator {
             .sort((a, b) => a.distance - b.distance)
             .slice(0, 2);
 
-        // Remove previous click marker and nearest markers
+        // Remove previous click marker, nearest markers, and lines
         if (this.clickMarker) {
             this.map.removeLayer(this.clickMarker);
         }
         this.nearestMarkers.forEach(marker => this.map.removeLayer(marker));
         this.nearestMarkers = [];
+        this.nearestLines.forEach(line => this.map.removeLayer(line));
+        this.nearestLines = [];
 
         // Add click marker
         this.clickMarker = L.marker([clickedLatLng.lat, clickedLatLng.lng], {
@@ -699,18 +702,33 @@ class ColocationLocator {
             })
         }).addTo(this.map);
 
-        // Add markers for the two nearest locations
+        // Add markers and lines for the two nearest locations
         nearest.forEach((location, index) => {
+            const color = index === 0 ? '#00cc66' : '#0099ff';
+            
+            // Draw line from clicked point to location
+            const line = L.polyline([
+                [clickedLatLng.lat, clickedLatLng.lng],
+                [location.lat, location.lng]
+            ], {
+                color: color,
+                weight: 3,
+                opacity: 0.7,
+                dashArray: '10, 10'
+            }).addTo(this.map);
+            this.nearestLines.push(line);
+
+            // Add marker
             const marker = L.marker([location.lat, location.lng], {
                 icon: L.divIcon({
                     className: 'nearest-marker',
-                    html: `<div style="background: ${index === 0 ? '#00cc66' : '#0099ff'}; color: white; width: 32px; height: 32px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">${index + 1}</div>`,
+                    html: `<div style="background: ${color}; color: white; width: 32px; height: 32px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">${index + 1}</div>`,
                     iconSize: [32, 32],
                     iconAnchor: [16, 16]
                 })
             }).bindPopup(`
                 <div class="nearest-popup">
-                    <h4 style="margin: 0 0 8px 0; color: ${index === 0 ? '#00cc66' : '#0099ff'};">
+                    <h4 style="margin: 0 0 8px 0; color: ${color};">
                         #${index + 1} Closest (${location.distance.toFixed(2)} km)
                     </h4>
                     <p style="margin: 4px 0; font-weight: 600;">${location.name}</p>
@@ -730,6 +748,9 @@ class ColocationLocator {
             }
         });
 
+        // Display nearest locations in the list section
+        this.displayNearestLocationsList(nearest);
+
         // Fit map to show clicked point and nearest locations
         const bounds = L.latLngBounds([
             [clickedLatLng.lat, clickedLatLng.lng],
@@ -737,6 +758,45 @@ class ColocationLocator {
             [nearest[1].lat, nearest[1].lng]
         ]);
         this.map.fitBounds(bounds, { padding: [50, 50] });
+    }
+
+    displayNearestLocationsList(nearest) {
+        const container = document.getElementById('nearest-locations-list');
+        if (!container) return;
+
+        if (nearest.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
+
+        container.style.display = 'block';
+        const listHtml = nearest.map((location, index) => {
+            const color = index === 0 ? '#00cc66' : '#0099ff';
+            return `
+                <div class="nearest-location-card" style="border-left: 4px solid ${color};">
+                    <div class="nearest-location-header">
+                        <span class="nearest-location-number" style="background: ${color};">${index + 1}</span>
+                        <span class="nearest-location-distance">${location.distance.toFixed(2)} km away</span>
+                    </div>
+                    <div class="nearest-location-name">${location.name}</div>
+                    <div class="nearest-location-details">
+                        <span class="provider-badge ${location.provider}">${this.getProviderDisplayName(location.provider)}</span>
+                        <span class="nearest-location-location">📍 ${location.city}, ${this.getCountryName(location.country)}</span>
+                        <span class="nearest-location-region">🌍 ${location.region}</span>
+                    </div>
+                    <button class="view-on-map-btn" onclick="colocationLocator.focusLocation(${location.lat}, ${location.lng})" style="background: ${color};">
+                        View on Map
+                    </button>
+                </div>
+            `;
+        }).join('');
+
+        container.innerHTML = `
+            <h3>🎯 Nearest Locations to Your Click</h3>
+            <div class="nearest-locations-grid">
+                ${listHtml}
+            </div>
+        `;
     }
 }
 
