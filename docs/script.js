@@ -21,6 +21,13 @@ class ColocationLocator {
             attribution: '© OpenStreetMap contributors',
             maxZoom: 18
         }).addTo(this.map);
+
+        // Add click event to find nearest locations
+        this.map.on('click', (e) => this.findNearestLocations(e.latlng));
+        
+        // Store click marker
+        this.clickMarker = null;
+        this.nearestMarkers = [];
     }
 
     setupEventListeners() {
@@ -606,6 +613,92 @@ class ColocationLocator {
 
     focusLocation(lat, lng) {
         this.map.setView([lat, lng], 10);
+    }
+
+    findNearestLocations(clickedLatLng) {
+        // Calculate distance between two points using Haversine formula
+        const calculateDistance = (lat1, lng1, lat2, lng2) => {
+            const R = 6371; // Earth's radius in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLng = (lng2 - lng1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLng / 2) * Math.sin(dLng / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        };
+
+        // Calculate distances for all locations
+        const locationsWithDistance = this.allLocations.map(location => ({
+            ...location,
+            distance: calculateDistance(
+                clickedLatLng.lat,
+                clickedLatLng.lng,
+                location.lat,
+                location.lng
+            )
+        }));
+
+        // Sort by distance and get the two closest
+        const nearest = locationsWithDistance
+            .sort((a, b) => a.distance - b.distance)
+            .slice(0, 2);
+
+        // Remove previous click marker and nearest markers
+        if (this.clickMarker) {
+            this.map.removeLayer(this.clickMarker);
+        }
+        this.nearestMarkers.forEach(marker => this.map.removeLayer(marker));
+        this.nearestMarkers = [];
+
+        // Add click marker
+        this.clickMarker = L.marker([clickedLatLng.lat, clickedLatLng.lng], {
+            icon: L.divIcon({
+                className: 'click-marker',
+                html: '<div style="background: #ff4444; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+                iconSize: [16, 16],
+                iconAnchor: [8, 8]
+            })
+        }).addTo(this.map);
+
+        // Add markers for the two nearest locations
+        nearest.forEach((location, index) => {
+            const marker = L.marker([location.lat, location.lng], {
+                icon: L.divIcon({
+                    className: 'nearest-marker',
+                    html: `<div style="background: ${index === 0 ? '#00cc66' : '#0099ff'}; color: white; width: 32px; height: 32px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">${index + 1}</div>`,
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16]
+                })
+            }).bindPopup(`
+                <div class="nearest-popup">
+                    <h4 style="margin: 0 0 8px 0; color: ${index === 0 ? '#00cc66' : '#0099ff'};">
+                        #${index + 1} Closest (${location.distance.toFixed(2)} km)
+                    </h4>
+                    <p style="margin: 4px 0; font-weight: 600;">${location.name}</p>
+                    <p style="margin: 4px 0; color: #666;">${location.city}, ${this.getCountryName(location.country)}</p>
+                    <p style="margin: 4px 0; color: #666;">${location.region}</p>
+                    <span class="provider-badge ${location.provider}" style="display: inline-block; margin-top: 4px;">
+                        ${this.getProviderDisplayName(location.provider)}
+                    </span>
+                </div>
+            `).addTo(this.map);
+
+            this.nearestMarkers.push(marker);
+            
+            // Open popup for the first location
+            if (index === 0) {
+                marker.openPopup();
+            }
+        });
+
+        // Fit map to show clicked point and nearest locations
+        const bounds = L.latLngBounds([
+            [clickedLatLng.lat, clickedLatLng.lng],
+            [nearest[0].lat, nearest[0].lng],
+            [nearest[1].lat, nearest[1].lng]
+        ]);
+        this.map.fitBounds(bounds, { padding: [50, 50] });
     }
 
     getProviderDisplayName(provider) {
