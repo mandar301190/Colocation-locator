@@ -11,7 +11,6 @@ class ColocationLocator {
         this.initMap();
         this.setupEventListeners();
         await this.loadData();
-        this.updateLastUpdated();
     }
 
     initMap() {
@@ -86,6 +85,7 @@ class ColocationLocator {
             if (cachedData && this.isDataFresh(cachedData.timestamp)) {
                 this.allLocations = cachedData.locations;
                 this.displayLocations();
+                this.updateLastUpdated(cachedData.timestamp);
                 return;
             }
 
@@ -99,8 +99,10 @@ class ColocationLocator {
             ]);
 
             this.allLocations = [...megaportData, ...equinixData, ...systems1111Data];
-            this.cacheData(this.allLocations);
+            const timestamp = Date.now();
+            this.cacheData(this.allLocations, timestamp);
             this.displayLocations();
+            this.updateLastUpdated(timestamp);
             
         } catch (error) {
             console.error('Error loading data:', error);
@@ -817,10 +819,10 @@ class ColocationLocator {
         return cached ? JSON.parse(cached) : null;
     }
 
-    cacheData(locations) {
+    cacheData(locations, timestamp) {
         const data = {
             locations,
-            timestamp: Date.now()
+            timestamp: timestamp || Date.now()
         };
         localStorage.setItem('colocation-data', JSON.stringify(data));
     }
@@ -833,12 +835,11 @@ class ColocationLocator {
     async refreshData() {
         localStorage.removeItem('colocation-data');
         await this.loadData();
-        this.updateLastUpdated();
     }
 
-    updateLastUpdated() {
-        const now = new Date();
-        document.getElementById('last-update').textContent = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+    updateLastUpdated(timestamp) {
+        const date = new Date(timestamp || Date.now());
+        document.getElementById('last-update').textContent = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
     }
 }
 
