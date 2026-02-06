@@ -684,10 +684,39 @@ class ColocationLocator {
             )
         }));
 
-        // Sort by distance and get the two closest
-        const nearest = locationsWithDistance
-            .sort((a, b) => a.distance - b.distance)
-            .slice(0, 2);
+        // Sort by distance from clicked point
+        const sortedLocations = locationsWithDistance.sort((a, b) => a.distance - b.distance);
+        
+        // Find two locations that are at least 60 miles (97 km) apart from each other
+        const minDistanceBetweenLocations = 97; // 60 miles in km
+        const nearest = [];
+        
+        // Get the first location (closest to click)
+        if (sortedLocations.length > 0) {
+            nearest.push(sortedLocations[0]);
+        }
+        
+        // Find second location that is at least 97 km away from the first location
+        if (sortedLocations.length > 1) {
+            for (let i = 1; i < sortedLocations.length; i++) {
+                const distanceBetween = calculateDistance(
+                    nearest[0].lat,
+                    nearest[0].lng,
+                    sortedLocations[i].lat,
+                    sortedLocations[i].lng
+                );
+                
+                if (distanceBetween >= minDistanceBetweenLocations) {
+                    nearest.push(sortedLocations[i]);
+                    break;
+                }
+            }
+            
+            // If no location found that's far enough, show a message
+            if (nearest.length < 2) {
+                alert('Could not find a second location that is at least 60 miles away from the nearest location. Showing only the closest location.');
+            }
+        }
 
         // Remove previous click marker, nearest markers, and lines
         if (this.clickMarker) {
@@ -758,12 +787,21 @@ class ColocationLocator {
         this.displayNearestLocationsList(nearest);
 
         // Fit map to show clicked point and nearest locations
-        const bounds = L.latLngBounds([
-            [clickedLatLng.lat, clickedLatLng.lng],
-            [nearest[0].lat, nearest[0].lng],
-            [nearest[1].lat, nearest[1].lng]
-        ]);
-        this.map.fitBounds(bounds, { padding: [50, 50] });
+        if (nearest.length === 2) {
+            const bounds = L.latLngBounds([
+                [clickedLatLng.lat, clickedLatLng.lng],
+                [nearest[0].lat, nearest[0].lng],
+                [nearest[1].lat, nearest[1].lng]
+            ]);
+            this.map.fitBounds(bounds, { padding: [50, 50] });
+        } else if (nearest.length === 1) {
+            // Only one location found, zoom to show clicked point and that location
+            const bounds = L.latLngBounds([
+                [clickedLatLng.lat, clickedLatLng.lng],
+                [nearest[0].lat, nearest[0].lng]
+            ]);
+            this.map.fitBounds(bounds, { padding: [50, 50] });
+        }
     }
 
     displayNearestLocationsList(nearest) {
