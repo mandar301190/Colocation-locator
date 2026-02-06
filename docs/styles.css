@@ -222,25 +222,37 @@ body::before {
     position: sticky;
     top: 0;
     z-index: 10;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
 }
 
 .locations-table th {
-    padding: 14px 18px;
+    padding: 16px 20px;
     text-align: left;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.locations-table th:last-child {
+    border-right: none;
 }
 
 .locations-table tbody tr {
     border-bottom: 1px solid #e2e8f0;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.locations-table tbody tr:nth-child(even) {
+    background: linear-gradient(90deg, #fafbfc 0%, #ffffff 100%);
 }
 
 .locations-table tbody tr:hover {
-    background-color: #f7fafc;
-    transform: scale(1.001);
+    background: linear-gradient(90deg, #f0f4ff 0%, #f7f9ff 100%);
+    transform: translateX(4px);
+    box-shadow: -4px 0 0 0 #667eea, 0 2px 8px rgba(102, 126, 234, 0.1);
 }
 
 .locations-table tbody tr:last-child {
@@ -248,32 +260,65 @@ body::before {
 }
 
 .locations-table td {
-    padding: 14px 18px;
+    padding: 16px 20px;
     vertical-align: middle;
+    position: relative;
+}
+
+.locations-table td:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #e2e8f0, transparent);
 }
 
 .location-name-cell {
     font-weight: 600;
     color: #2d3748;
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .location-name-cell:hover {
     color: #667eea;
 }
 
+.location-name-cell::before {
+    content: '📍';
+    font-size: 1.1rem;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+.location-name-cell:hover::before {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
 .provider-badge {
     display: inline-block;
-    padding: 4px 10px;
-    border-radius: 16px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    margin-left: 10px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-left: 0;
     vertical-align: middle;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: 0.8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    transition: all 0.2s ease;
+}
+
+.provider-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
 }
 
 .provider-badge.megaport {
@@ -295,34 +340,55 @@ body::before {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 14px;
+    padding: 9px 16px;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 20px;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 3px 8px rgba(102, 126, 234, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .map-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
 }
 
 .map-link::before {
     content: "📍";
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .country-cell {
     color: #4a5568;
-    font-weight: 500;
+    font-weight: 600;
+    position: relative;
+    padding-left: 28px !important;
+}
+
+.country-cell::before {
+    content: '🌐';
+    position: absolute;
+    left: 20px;
+    font-size: 1rem;
+    opacity: 0.6;
 }
 
 .continent-cell {
     color: #718096;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #edf2f7, #e2e8f0);
+    border-radius: 6px;
+    display: inline-block;
+}
     font-weight: 600;
 }
 
