@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <rect width="80" height="80" fill="#8b5cf6"/>
+  <defs>
+    <style>
+      .dc-icon { fill: none; stroke: #ffffff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <!-- Cloud shape -->
+  <path class="dc-icon" d="M 15 35 Q 15 25 25 25 Q 25 15 40 15 Q 55 15 55 25 Q 65 25 65 35 Q 65 45 55 45 L 25 45 Q 15 45 15 35 Z"/>
+  <!-- Connection lines -->
+  <line class="dc-icon" x1="30" y1="45" x2="30" y2="60"/>
+  <line class="dc-icon" x1="40" y1="45" x2="40" y2="60"/>
+  <line class="dc-icon" x1="50" y1="45" x2="50" y2="60"/>
+  <!-- Connection points -->
+  <circle class="dc-icon" cx="30" cy="60" r="3" fill="#ffffff"/>
+  <circle class="dc-icon" cx="40" cy="60" r="3" fill="#ffffff"/>
+  <circle class="dc-icon" cx="50" cy="60" r="3" fill="#ffffff"/>
+  <!-- Base -->
+  <rect class="dc-icon" x="25" y="65" width="30" height="8" rx="2"/>
+</svg>
