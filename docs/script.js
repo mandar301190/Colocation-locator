@@ -661,6 +661,83 @@ class ColocationLocator {
     }
 
     findNearestLocations(clickedLatLng) {
+        // First, check if the clicked location is on land or water
+        this.checkIfLand(clickedLatLng).then(isLand => {
+            if (!isLand) {
+                // Show water location marker with warning
+                this.showWaterLocationWarning(clickedLatLng);
+                return;
+            }
+            
+            // Proceed with finding nearest locations if on land
+            this.processNearestLocations(clickedLatLng);
+        });
+    }
+
+    async checkIfLand(latlng) {
+        try {
+            // Use Nominatim reverse geocoding to check if location is on land
+            const response = await fetch(
+                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latlng.lat}&lon=${latlng.lng}&zoom=10`
+            );
+            const data = await response.json();
+            
+            // If no address is returned or it's a body of water, it's not land
+            if (!data.address || data.error || 
+                data.type === 'sea' || data.type === 'ocean' || 
+                data.class === 'natural' && (data.type === 'water' || data.type === 'bay')) {
+                return false;
+            }
+            
+            return true;
+        } catch (error) {
+            console.error('Error checking location:', error);
+            // If there's an error, assume it's land to not block functionality
+            return true;
+        }
+    }
+
+    showWaterLocationWarning(clickedLatLng) {
+        // Remove previous markers and lines
+        if (this.clickMarker) {
+            this.map.removeLayer(this.clickMarker);
+        }
+        this.nearestMarkers.forEach(marker => this.map.removeLayer(marker));
+        this.nearestMarkers = [];
+        this.nearestLines.forEach(line => this.map.removeLayer(line));
+        this.nearestLines = [];
+
+        // Add warning marker at clicked location
+        this.clickMarker = L.marker([clickedLatLng.lat, clickedLatLng.lng], {
+            icon: L.divIcon({
+                className: 'water-marker',
+                html: '<div style="background: #ff4444; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); animation: pulse 1.5s infinite;"></div>',
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
+            })
+        }).bindPopup(`
+            <div style="text-align: center; padding: 10px; min-width: 200px;">
+                <div style="font-size: 2rem; margin-bottom: 8px;">🌊</div>
+                <h4 style="margin: 0 0 8px 0; color: #e53e3e; font-weight: 700;">Invalid Location</h4>
+                <p style="margin: 4px 0; color: #4a5568; font-size: 0.9rem;">
+                    You clicked on a water body (ocean, sea, or lake).
+                </p>
+                <p style="margin: 8px 0 0 0; color: #718096; font-size: 0.85rem; font-weight: 600;">
+                    Please click on a land location to find nearby colocation facilities.
+                </p>
+            </div>
+        `).addTo(this.map);
+        
+        this.clickMarker.openPopup();
+        
+        // Hide nearest locations section
+        const container = document.getElementById('nearest-locations-list');
+        if (container) {
+            container.style.display = 'none';
+        }
+    }
+
+    processNearestLocations(clickedLatLng) {
         // Calculate distance between two points using Haversine formula
         const calculateDistance = (lat1, lng1, lat2, lng2) => {
             const R = 6371; // Earth's radius in km
