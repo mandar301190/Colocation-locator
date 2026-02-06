@@ -378,7 +378,7 @@ body::before {
     color: #4a5568;
     font-weight: 600;
     position: relative;
-    padding-left: 28px !important;
+    padding-left: 40px !important;
 }
 
 .country-cell::before {
