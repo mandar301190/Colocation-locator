@@ -567,17 +567,13 @@ class ColocationLocator {
         const container = document.getElementById('locations-container');
         
         if (this.filteredLocations.length === 0) {
-            container.innerHTML = '<tr><td colspan="5" class="loading">No locations found for the selected filters.</td></tr>';
+            container.innerHTML = '<tr><td colspan="4" class="loading">No locations found for the selected filters.</td></tr>';
             return;
         }
 
         const html = this.filteredLocations.map(location => {
             const googleMapsUrl = `https://www.google.com/maps?q=${location.lat},${location.lng}`;
             const countryName = this.getCountryName(location.country);
-            
-            // Create PeeringDB search URL - search for facility by name and city
-            const searchQuery = encodeURIComponent(`${location.name} ${location.city}`);
-            const peeringDBUrl = `https://www.peeringdb.com/search?q=${searchQuery}`;
             
             return `
                 <tr>
@@ -587,9 +583,6 @@ class ColocationLocator {
                     </td>
                     <td>
                         <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer" class="map-link">View Map</a>
-                    </td>
-                    <td>
-                        <a href="${peeringDBUrl}" target="_blank" rel="noopener noreferrer" class="peeringdb-link">Search PeeringDB</a>
                     </td>
                     <td class="country-cell">${countryName}</td>
                     <td class="continent-cell">${location.region}</td>

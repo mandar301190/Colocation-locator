@@ -246,31 +246,6 @@ body {
     font-size: 0.9rem;
 }
 
-.peeringdb-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 6px 12px;
-    background: #2c5aa0;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-.peeringdb-link:hover {
-    background: #1e4278;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(44, 90, 160, 0.3);
-}
-
-.peeringdb-link::before {
-    content: "🔗";
-    font-size: 0.9rem;
-}
-
 .country-cell {
     color: #555;
 }
@@ -365,11 +340,6 @@ body {
     }
     
     .map-link {
-        padding: 5px 10px;
-        font-size: 0.75rem;
-    }
-    
-    .peeringdb-link {
         padding: 5px 10px;
         font-size: 0.75rem;
     }
