@@ -1,9 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="32" height="32">
   <defs>
     <style>
-      .dc-icon { fill: none; stroke: #ffffff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .dc-icon { fill: none; stroke: #8b5cf6; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
     </style>
   </defs>
+  <!-- White background circle for contrast -->
+  <circle cx="40" cy="40" r="38" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
   <!-- Cloud shape -->
   <path class="dc-icon" d="M 15 35 Q 15 25 25 25 Q 25 15 40 15 Q 55 15 55 25 Q 65 25 65 35 Q 65 45 55 45 L 25 45 Q 15 45 15 35 Z"/>
   <!-- Connection lines -->
@@ -11,9 +13,9 @@
   <line class="dc-icon" x1="40" y1="45" x2="40" y2="60"/>
   <line class="dc-icon" x1="50" y1="45" x2="50" y2="60"/>
   <!-- Connection points -->
-  <circle class="dc-icon" cx="30" cy="60" r="3" fill="#ffffff"/>
-  <circle class="dc-icon" cx="40" cy="60" r="3" fill="#ffffff"/>
-  <circle class="dc-icon" cx="50" cy="60" r="3" fill="#ffffff"/>
+  <circle class="dc-icon" cx="30" cy="60" r="3" fill="#8b5cf6"/>
+  <circle class="dc-icon" cx="40" cy="60" r="3" fill="#8b5cf6"/>
+  <circle class="dc-icon" cx="50" cy="60" r="3" fill="#8b5cf6"/>
   <!-- Base -->
-  <rect class="dc-icon" x="25" y="65" width="30" height="8" rx="2"/>
+  <rect class="dc-icon" x="25" y="65" width="30" height="8" rx="2" fill="#8b5cf6"/>
 </svg>
