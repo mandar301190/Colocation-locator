@@ -540,17 +540,9 @@ class ColocationLocator {
         this.markers.forEach(marker => this.map.removeLayer(marker));
         this.markers = [];
 
-        // Create custom Direct Connect icon
-        const dcIcon = L.icon({
-            iconUrl: 'direct-connect-icon.svg',
-            iconSize: [32, 32],
-            iconAnchor: [16, 16],
-            popupAnchor: [0, -16]
-        });
-
         // Add new markers
         this.filteredLocations.forEach(location => {
-            const marker = L.marker([location.lat, location.lng], { icon: dcIcon })
+            const marker = L.marker([location.lat, location.lng])
                 .bindPopup(`
                     <div class="popup-content">
                         <h4>${location.name}</h4>
