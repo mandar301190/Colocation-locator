@@ -15,7 +15,7 @@ class DataUpdater {
             console.log(`Created directory: ${this.dataDir}`);
         }
         
-        const docsDataDir = './docs/data';
+        const docsDataDir = '../docs/data';
         if (!fs.existsSync(docsDataDir)) {
             fs.mkdirSync(docsDataDir, { recursive: true });
             console.log(`Created directory: ${docsDataDir}`);
@@ -211,7 +211,7 @@ class DataUpdater {
             totalLocations: megaportData.length + equinixData.length + systems1111Data.length
         };
 
-        const docsDataDir = './docs/data';
+        const docsDataDir = '../docs/data';
 
         // Save individual provider data to both data/ and docs/data/
         console.log('Writing data files...');

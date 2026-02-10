@@ -33,19 +33,24 @@ Visit the live application: [https://mandar301190.github.io/Colocation-locator/]
 
 ```
 colocation-locator/
-├── index.html              # Main application page
-├── styles.css              # Application styles
-├── script.js               # Main application logic
-├── data-fetcher.js         # Data fetching utilities
-├── update-data.js          # Node.js script for data updates
-├── data/                   # JSON data files
-│   ├── megaport.json
-│   ├── equinix.json
-│   ├── 1111systems.json
-│   └── all-locations.json
-├── .github/workflows/      # GitHub Actions
-│   └── update-data.yml
-└── README.md
+├── README.md               # Project documentation
+├── _config.yml            # Jekyll configuration for GitHub Pages
+├── docs/                  # Production files (served by GitHub Pages)
+│   ├── index.html
+│   ├── script.js
+│   ├── styles.css
+│   ├── data/             # Production data files
+│   └── *.svg             # Icons and assets
+├── src/                   # Source files and development code
+│   ├── index.html        # Development HTML
+│   ├── script.js         # Development JavaScript
+│   ├── styles.css        # Development CSS
+│   ├── package.json      # Node.js dependencies
+│   ├── update-data.js    # Data update script
+│   ├── data/             # Source data files
+│   └── *.py              # Python utility scripts
+└── .github/workflows/    # GitHub Actions automation
+    └── update-data.yml
 ```
 
 ## 🔧 Local Development
@@ -56,9 +61,19 @@ colocation-locator/
    cd Colocation-locator
    ```
 
-2. **Serve locally**:
+2. **Navigate to source directory**:
    ```bash
-   # Using Python
+   cd src
+   ```
+
+3. **Install dependencies** (for data updates):
+   ```bash
+   npm install
+   ```
+
+4. **Serve locally**:
+   ```bash
+   # Using Python (from src directory)
    python -m http.server 8000
    
    # Using Node.js
@@ -68,7 +83,7 @@ colocation-locator/
    php -S localhost:8000
    ```
 
-3. **Open in browser**:
+5. **Open in browser**:
    Navigate to `http://localhost:8000`
 
 ## 🔄 Data Updates
@@ -77,16 +92,23 @@ The application automatically updates data weekly via GitHub Actions. The workfl
 
 1. Runs every Sunday at 2 AM UTC
 2. Fetches latest data from PeeringDB APIs
-3. Updates JSON files in the `data/` directory
+3. Updates JSON files in both `src/data/` and `docs/data/` directories
 4. Commits changes back to the repository
 
 ### Manual Data Update
 
 To manually trigger a data update:
 
+**Via GitHub Actions:**
 1. Go to the "Actions" tab in the GitHub repository
 2. Select "Update Colocation Data" workflow
 3. Click "Run workflow"
+
+**Via Command Line:**
+```bash
+cd src
+node update-data.js
+```
 
 ## 🌍 Regional Coverage
 
