@@ -25,42 +25,55 @@ class DataUpdater {
     async fetchMegaportData() {
         try {
             console.log('Fetching Megaport data from PeeringDB...');
-            const response = await axios.get('https://www.peeringdb.com/api/net/27330');
+            const response = await axios.get('https://www.peeringdb.com/api/net/27330', {
+                timeout: 10000,
+                headers: {
+                    'User-Agent': 'Colocation-Locator-Bot/1.0'
+                }
+            });
             const netData = response.data.data[0];
             
             const locations = [];
             
             if (netData && netData.netfac_set) {
+                console.log(`Found ${netData.netfac_set.length} facilities to process`);
+                
                 for (const facility of netData.netfac_set) {
                     try {
-                        const facResponse = await axios.get(`https://www.peeringdb.com/api/fac/${facility.fac_id}`);
+                        const facResponse = await axios.get(`https://www.peeringdb.com/api/fac/${facility.fac_id}`, {
+                            timeout: 10000,
+                            headers: {
+                                'User-Agent': 'Colocation-Locator-Bot/1.0'
+                            }
+                        });
                         const facData = facResponse.data.data[0];
                         
-                        if (facData) {
+                        if (facData && facData.latitude && facData.longitude) {
                             locations.push({
                                 name: `Megaport ${facData.name}`,
                                 provider: 'megaport',
                                 region: this.getRegionFromCountry(facData.country),
                                 country: facData.country,
                                 city: facData.city,
-                                lat: parseFloat(facData.latitude) || 0,
-                                lng: parseFloat(facData.longitude) || 0,
+                                lat: parseFloat(facData.latitude),
+                                lng: parseFloat(facData.longitude),
                                 address: facData.address1 || ''
                             });
                         }
                         
-                        // Add delay to avoid rate limiting
-                        await new Promise(resolve => setTimeout(resolve, 100));
+                        // Add delay to avoid rate limiting (200ms between requests)
+                        await new Promise(resolve => setTimeout(resolve, 200));
                     } catch (error) {
                         console.warn(`Error fetching facility ${facility.fac_id}:`, error.message);
                     }
                 }
             }
             
-            console.log(`Found ${locations.length} Megaport locations`);
-            return locations;
+            console.log(`Successfully fetched ${locations.length} Megaport locations`);
+            return locations.length > 0 ? locations : this.getFallbackMegaportData();
         } catch (error) {
             console.error('Error fetching Megaport data:', error.message);
+            console.log('Using fallback Megaport data');
             return this.getFallbackMegaportData();
         }
     }
@@ -68,24 +81,32 @@ class DataUpdater {
     async fetchEquinixData() {
         try {
             console.log('Fetching Equinix data from PeeringDB...');
-            const response = await axios.get('https://www.peeringdb.com/api/fac?org_id=2');
+            const response = await axios.get('https://www.peeringdb.com/api/fac?org_id=2', {
+                timeout: 10000,
+                headers: {
+                    'User-Agent': 'Colocation-Locator-Bot/1.0'
+                }
+            });
             const facilities = response.data.data;
             
-            const locations = facilities.map(fac => ({
-                name: `Equinix ${fac.name}`,
-                provider: 'equinix',
-                region: this.getRegionFromCountry(fac.country),
-                country: fac.country,
-                city: fac.city,
-                lat: parseFloat(fac.latitude) || 0,
-                lng: parseFloat(fac.longitude) || 0,
-                address: fac.address1 || ''
-            }));
+            const locations = facilities
+                .filter(fac => fac.latitude && fac.longitude)
+                .map(fac => ({
+                    name: `Equinix ${fac.name}`,
+                    provider: 'equinix',
+                    region: this.getRegionFromCountry(fac.country),
+                    country: fac.country,
+                    city: fac.city,
+                    lat: parseFloat(fac.latitude),
+                    lng: parseFloat(fac.longitude),
+                    address: fac.address1 || ''
+                }));
             
-            console.log(`Found ${locations.length} Equinix locations`);
-            return locations;
+            console.log(`Successfully fetched ${locations.length} Equinix locations`);
+            return locations.length > 0 ? locations : this.getFallbackEquinixData();
         } catch (error) {
             console.error('Error fetching Equinix data:', error.message);
+            console.log('Using fallback Equinix data');
             return this.getFallbackEquinixData();
         }
     }

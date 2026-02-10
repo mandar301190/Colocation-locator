@@ -18,29 +18,53 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
         
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18'
+        cache: 'npm'
         
     - name: Install dependencies
-      run: npm install
+      run: |
+        echo "Installing dependencies..."
+        npm ci || npm install
+        echo "Dependencies installed successfully"
+        
+    - name: Verify directories
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Listing files:"
+        ls -la
+        echo "Checking if update-data.js exists:"
+        test -f update-data.js && echo "✓ update-data.js found" || echo "✗ update-data.js not found"
         
     - name: Update data
       run: |
+        echo "Running data update script..."
         node update-data.js
+        echo "Data update script completed"
+        
+    - name: Check for changes
+      id: check_changes
+      run: |
+        git status
+        if [[ -n $(git status -s) ]]; then
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "Changes detected"
+        else
+          echo "changes=false" >> $GITHUB_OUTPUT
+          echo "No changes detected"
+        fi
         
     - name: Commit and push changes
+      if: steps.check_changes.outputs.changes == 'true'
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add data/ docs/data/
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "Auto-update colocation data - $(date +'%Y-%m-%d %H:%M:%S')"
-          git push
-        fi
+        git commit -m "Auto-update colocation data - $(date +'%Y-%m-%d %H:%M:%S UTC')" || echo "Nothing to commit"
+        git push origin main || echo "Nothing to push"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
