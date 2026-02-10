@@ -182,13 +182,25 @@ class DataUpdater {
             totalLocations: megaportData.length + equinixData.length + systems1111Data.length
         };
 
-        // Save individual provider data
-        fs.writeFileSync(`${this.dataDir}/megaport.json`, JSON.stringify(megaportData, null, 2));
-        fs.writeFileSync(`${this.dataDir}/equinix.json`, JSON.stringify(equinixData, null, 2));
-        fs.writeFileSync(`${this.dataDir}/1111systems.json`, JSON.stringify(systems1111Data, null, 2));
+        // Ensure docs/data directory exists
+        const docsDataDir = './docs/data';
+        if (!fs.existsSync(docsDataDir)) {
+            fs.mkdirSync(docsDataDir, { recursive: true });
+        }
 
-        // Save combined data
+        // Save individual provider data to both data/ and docs/data/
+        fs.writeFileSync(`${this.dataDir}/megaport.json`, JSON.stringify(megaportData, null, 2));
+        fs.writeFileSync(`${docsDataDir}/megaport.json`, JSON.stringify(megaportData, null, 2));
+        
+        fs.writeFileSync(`${this.dataDir}/equinix.json`, JSON.stringify(equinixData, null, 2));
+        fs.writeFileSync(`${docsDataDir}/equinix.json`, JSON.stringify(equinixData, null, 2));
+        
+        fs.writeFileSync(`${this.dataDir}/1111systems.json`, JSON.stringify(systems1111Data, null, 2));
+        fs.writeFileSync(`${docsDataDir}/1111systems.json`, JSON.stringify(systems1111Data, null, 2));
+
+        // Save combined data to both directories
         fs.writeFileSync(`${this.dataDir}/all-locations.json`, JSON.stringify(allData, null, 2));
+        fs.writeFileSync(`${docsDataDir}/all-locations.json`, JSON.stringify(allData, null, 2));
 
         console.log(`Data update completed. Total locations: ${allData.totalLocations}`);
         console.log(`- Megaport: ${megaportData.length}`);
