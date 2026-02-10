@@ -25,9 +25,7 @@ jobs:
         node-version: '18'
         
     - name: Install dependencies
-      run: |
-        npm init -y
-        npm install axios cheerio
+      run: npm install
         
     - name: Update data
       run: |

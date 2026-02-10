@@ -9,8 +9,16 @@ class DataUpdater {
     }
 
     ensureDataDir() {
+        // Ensure both data directories exist
         if (!fs.existsSync(this.dataDir)) {
             fs.mkdirSync(this.dataDir, { recursive: true });
+            console.log(`Created directory: ${this.dataDir}`);
+        }
+        
+        const docsDataDir = './docs/data';
+        if (!fs.existsSync(docsDataDir)) {
+            fs.mkdirSync(docsDataDir, { recursive: true });
+            console.log(`Created directory: ${docsDataDir}`);
         }
     }
 
@@ -182,13 +190,10 @@ class DataUpdater {
             totalLocations: megaportData.length + equinixData.length + systems1111Data.length
         };
 
-        // Ensure docs/data directory exists
         const docsDataDir = './docs/data';
-        if (!fs.existsSync(docsDataDir)) {
-            fs.mkdirSync(docsDataDir, { recursive: true });
-        }
 
         // Save individual provider data to both data/ and docs/data/
+        console.log('Writing data files...');
         fs.writeFileSync(`${this.dataDir}/megaport.json`, JSON.stringify(megaportData, null, 2));
         fs.writeFileSync(`${docsDataDir}/megaport.json`, JSON.stringify(megaportData, null, 2));
         
@@ -211,4 +216,12 @@ class DataUpdater {
 
 // Run the update
 const updater = new DataUpdater();
-updater.updateAllData().catch(console.error);
+updater.updateAllData()
+    .then(() => {
+        console.log('Data update completed successfully!');
+        process.exit(0);
+    })
+    .catch(error => {
+        console.error('Data update failed:', error);
+        process.exit(1);
+    });
