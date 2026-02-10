@@ -16,6 +16,9 @@ exclude:
   - data-fetcher.js
   - README.md
   - .gitignore
+  - src/
+  - .vscode/
+  - .github/
 
 # Include files
 include:
