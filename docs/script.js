@@ -4,6 +4,7 @@ class ColocationLocator {
         this.markers = [];
         this.allLocations = [];
         this.filteredLocations = [];
+        this.searchQuery = '';
         this.init();
     }
 
@@ -38,6 +39,12 @@ class ColocationLocator {
         document.getElementById('provider-select').addEventListener('change', () => this.filterLocations());
         document.getElementById('region-select').addEventListener('change', () => this.filterLocations());
         document.getElementById('refresh-data').addEventListener('click', () => this.refreshData());
+        
+        // Add search functionality
+        document.getElementById('location-search').addEventListener('input', (e) => {
+            this.searchQuery = e.target.value.toLowerCase();
+            this.filterLocations();
+        });
         
         // Hide nearest locations section when clicking outside the map
         document.addEventListener('click', (e) => {
@@ -527,7 +534,15 @@ class ColocationLocator {
         this.filteredLocations = this.allLocations.filter(location => {
             const providerMatch = !providerFilter || location.provider === providerFilter;
             const regionMatch = !regionFilter || location.region === regionFilter;
-            return providerMatch && regionMatch;
+            
+            // Search filter - search across name, city, country, and provider
+            const searchMatch = !this.searchQuery || 
+                location.name.toLowerCase().includes(this.searchQuery) ||
+                location.city.toLowerCase().includes(this.searchQuery) ||
+                location.country.toLowerCase().includes(this.searchQuery) ||
+                this.getProviderDisplayName(location.provider).toLowerCase().includes(this.searchQuery);
+            
+            return providerMatch && regionMatch && searchMatch;
         });
 
         this.updateMap();

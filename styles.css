@@ -214,6 +214,35 @@ body::before {
     font-weight: 500;
 }
 
+.search-container {
+    margin-bottom: 24px;
+}
+
+#location-search {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    background: white;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #2d3748;
+}
+
+#location-search:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+    transform: translateY(-1px);
+}
+
+#location-search::placeholder {
+    color: #a0aec0;
+    font-weight: 400;
+}
+
 .table-container {
     overflow-x: auto;
     border-radius: 12px;
