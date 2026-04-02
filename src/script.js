@@ -206,7 +206,24 @@ class ColocationLocator {
     }
 
     async fetchEquinixData() {
-        // Comprehensive Equinix data based on PeeringDB facilities
+        // Load Equinix data from JSON file
+        try {
+            const response = await fetch('data/equinix.json');
+            if (!response.ok) {
+                console.warn('Could not load equinix.json, using fallback data');
+                return this.getFallbackEquinixData();
+            }
+            const data = await response.json();
+            console.log(`Loaded ${data.length} Equinix locations from JSON`);
+            return data;
+        } catch (error) {
+            console.warn('Error loading equinix.json:', error);
+            return this.getFallbackEquinixData();
+        }
+    }
+
+    getFallbackEquinixData() {
+        // Fallback Equinix data in case JSON file is not available
         return [
             // North America
             { name: 'Equinix DC1-DC15 - Ashburn', provider: 'equinix', region: 'North America', country: 'United States', city: 'Ashburn', lat: 39.0437, lng: -77.4875 },
@@ -452,7 +469,24 @@ class ColocationLocator {
     }
 
     async fetchSystems1111Data() {
-        // Comprehensive 11:11 Systems data
+        // Load 11:11 Systems data from JSON file
+        try {
+            const response = await fetch('data/1111systems.json');
+            if (!response.ok) {
+                console.warn('Could not load 1111systems.json, using fallback data');
+                return this.getFallback1111SystemsData();
+            }
+            const data = await response.json();
+            console.log(`Loaded ${data.length} 11:11 Systems locations from JSON`);
+            return data;
+        } catch (error) {
+            console.warn('Error loading 1111systems.json:', error);
+            return this.getFallback1111SystemsData();
+        }
+    }
+
+    getFallback1111SystemsData() {
+        // Fallback 11:11 Systems data in case JSON file is not available
         return [
             // EMEA - Primary presence
             { name: '11:11 Systems London Docklands', provider: '1111systems', region: 'EMEA', country: 'United Kingdom', city: 'London', lat: 51.5074, lng: -0.0278 },
