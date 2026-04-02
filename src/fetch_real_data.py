@@ -35,6 +35,19 @@ def fetch_json(url):
         print(f"Error fetching {url}: {e}")
         return None
 
+def load_existing_data(provider):
+    """Load existing data from file if available"""
+    try:
+        filepath = f'./data/{provider}.json'
+        if os.path.exists(filepath):
+            with open(filepath, 'r') as f:
+                data = json.load(f)
+                print(f'Loaded {len(data)} existing {provider} locations from file')
+                return data
+    except Exception as e:
+        print(f'Could not load existing {provider} data: {e}')
+    return []
+
 def fetch_megaport_data():
     """Fetch Megaport data from PeeringDB"""
     print('Fetching Megaport data from PeeringDB...')
@@ -43,8 +56,8 @@ def fetch_megaport_data():
     net_data = fetch_json('https://www.peeringdb.com/api/net/27330')
     
     if not net_data or 'data' not in net_data or not net_data['data']:
-        print('No Megaport network data found')
-        return []
+        print('No Megaport network data found - trying to load existing data')
+        return load_existing_data('megaport')
     
     network = net_data['data'][0]
     facility_ids = [f['fac_id'] for f in network.get('netfac_set', [])]
@@ -97,8 +110,8 @@ def fetch_equinix_data():
     fac_data = fetch_json('https://www.peeringdb.com/api/fac?org_id=2')
     
     if not fac_data or 'data' not in fac_data:
-        print('No Equinix facility data found')
-        return []
+        print('No Equinix facility data found - trying to load existing data')
+        return load_existing_data('equinix')
     
     print(f'Found {len(fac_data["data"])} Equinix facilities')
     
@@ -219,9 +232,18 @@ def main():
         json.dump(all_data, f, indent=2)
     
     # Also save to docs directory for GitHub Pages
-    os.makedirs('./docs/data', exist_ok=True)
+    os.makedirs('../docs/data', exist_ok=True)
     
-    with open('./docs/data/all-locations.json', 'w') as f:
+    with open('../docs/data/megaport.json', 'w') as f:
+        json.dump(megaport_data, f, indent=2)
+    
+    with open('../docs/data/equinix.json', 'w') as f:
+        json.dump(equinix_data, f, indent=2)
+    
+    with open('../docs/data/1111systems.json', 'w') as f:
+        json.dump(systems1111_data, f, indent=2)
+    
+    with open('../docs/data/all-locations.json', 'w') as f:
         json.dump(all_data, f, indent=2)
     
     print('\n=== Data Fetch Complete ===')
@@ -231,7 +253,7 @@ def main():
     print(f'Total: {all_data["totalLocations"]} locations')
     print('\nData saved to:')
     print('  - ./data/all-locations.json')
-    print('  - ./docs/data/all-locations.json')
+    print('  - ../docs/data/all-locations.json')
 
 if __name__ == '__main__':
     main()
